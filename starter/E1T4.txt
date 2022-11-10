@@ -1,5 +1,10 @@
 Based on the architecture diagram, and the steps you have taken so far to upload data and access the application web service, identify at least 2 obvious poor practices as it relates to security.  Include justification.
 
 # Poor practice 1
+Application Server is on public subnet. Loadbalancer should be in the public subnet while the application server is in a private subnet with a related security group. The ALB is forwarding requests to the application server, so there is no need to expose the app server to the internet.
 
 # Poor practice 2
+Application server has full access to S3 bucket although only read access is required. This is violating the least privileges principle.
+
+# Poor practice 3
+Application server accepts ssh connections from all IPs. This will allow attcks, e.g brutefore attacks. If ssh acces is required this should be limited to IPs or IP ranges. 

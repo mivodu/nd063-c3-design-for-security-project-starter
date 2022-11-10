@@ -1,8 +1,16 @@
 
 # What additional architectural change can be made to reduce the internet facing attack surface of the web application instance.
+    - The application server could be moved to the private subnet 
+    - Add alarms (e.g. based on cloudwatch logs)
+    - Add WAF in front of ALB
 
 # Assuming the IAM permissions for the S3 bucket are still insecure, would creating VPC private endpoints for S3 prevent the unauthorized access to the secrets bucket.
+VPC private endpoint will not solve the problem. Access to S3 from Amazon network is still possible
 
 # Will applying default encryption setting to the s3 buckets encrypt the data that already exists?
+Default encryption setting will not encrypt existing data. Only objects stored after changing the setting will be encrypted.
 
 # What would happen if the original cloud formation templates are applied to this environment.
+In general, the manual changes will be overwritten if we would apply the cloud formation template once again. If we deploy through cloud formation templates all changes need to be done there as well and not manually.
+There are different ways to update (direct update, change steps) to handle this problem.
+You can use drift detection to identify stack resources to which configuration changes have been made outside of CloudFormation management and take corrective action

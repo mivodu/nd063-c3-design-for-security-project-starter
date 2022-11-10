@@ -1,13 +1,26 @@
 # Identify tools that will allow you to do the following:
 
 ## Scan infrastructure as code templates
+Example tools that cover cloudformation and terraform code scanning:
+    - Checkov (checkov.io)
+    - kics (kics.io)
+    - Regula: github.com/fugue/regula
 
 ### Example vulnerability
+kics examples for Terraform:
+    - Key Expiration Not Set -> Make sure that for all keys the expiration date is set
+    - ALB Listening on HTTP -> Application Load Balancer Listener should not listen on HTTP
 
 ##Scan AMI’s or containers for OS vulnerabilities
+    - grype (github.com/anchore/grype)
+    - trivy (github.com/aquasecurity/trivy)
 
 ### Example vulnerability
+grype example for Debian Linux:
+    - CVE-2012-0833: The acllas__handle_group_entry function in servers/plugins/acl/acllas.c in 389 Directory Server before 1.2.10 does not properly handled access control instructions (ACIs) that use certificate groups, which allows remote authenticated LDAP users with a certificate group to cause a denial of service (infinite loop and CPU consumption) by binding to the server.
 
 ##Scan an AWS environment for cloud configuration vulnerabilities
+    - AWS Config (aws.amazon.com/config)
 
 ### Example vulnerability
+    - securityhub-s3-bucket-server-side-encryption-enabled-bb61ce6d: Checks that your Amazon S3 bucket either has Amazon S3 default encryption enabled or that the S3 bucket policy explicitly denies put-object requests without server side encryption.
